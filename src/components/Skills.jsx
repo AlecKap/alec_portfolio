@@ -21,9 +21,20 @@ const Skills = () => {
             <Title size={"h2"} text={"Skills"} />
           </Container>
           <Row className="mt-3 align-items-center">
+            {resume && (
+              <a href={resume}>
+                <Button
+                  size="lg"
+                  variant={theme === "light" ? "outline-dark" : "outline-light"}
+                  className="mt-5"
+                >
+                  R&eacute;sum&eacute;
+                </Button>
+              </a>
+            )}
             {skillData.map((skills) => {
               return (
-                <Col xs={4} key={skills.id} className="my-md-5">
+                <Col xs={4} key={skills.id} className="my-md-2">
                   <figure>
                     {skills.skill}
                     <figcaption>{skills.name}</figcaption>
@@ -32,17 +43,6 @@ const Skills = () => {
               );
             })}
           </Row>
-          {resume && (
-            <a href={resume}>
-              <Button
-                size="lg"
-                variant={theme === "light" ? "outline-dark" : "outline-light"}
-                className="mt-5"
-              >
-                R&eacute;sum&eacute;
-              </Button>
-            </a>
-          )}
         </Container>
       </section>
     </Element>
