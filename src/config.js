@@ -35,8 +35,13 @@ export { HeroDark as Dark };
   Add a second paragraph for the about me section.
 */
 export const moreInfo =
-  "I enjoy learning about technology and helping others use it to improve their lives and be more productive. I built this site with React, React Bootstrap, Redux, and the GitHub REST API.";
-
+  "Prior to pursuing a career in software engineering, I spent nearly a decade working in emergency medicine and doing medical consultation for C-suite executives and A-list celebrities.\n" +
+  "During that time, I also attended school and graduated with a degree in philosophy.\n" +
+  "I knew I wanted to take the skills and experience I had developed studying philosophy and working in medicine and use them to pursue a life as a software engineer!\n" +
+  "I ended up attending and graduating from the Turing School of Software and Design, an ACCET federally accredited seven month intensive software engineering program.\n" +
+  "I value intellectual challenges, collaboration, and leveraging my analytic problem solving skills to deliver efficient technical solutions that are clean, maintainable, and impactful.\n" +
+  "I thrive in high-stakes, team-oriented environments by fostering positive team dynamics through exceptional communication and leadership.\n" +
+  "Please feel free to reach out to me at amkap12@gmail.com and let's discuss exciting new projects you are working on or how I can contribute to your company and community goals!";
 /* Skills
  ************************************************************** 
   Add or remove skills in the SAME format below, choose icons here - https://icon-sets.iconify.design/
