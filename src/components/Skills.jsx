@@ -20,8 +20,7 @@ const Skills = () => {
           <Container className="d-flex justify-content-center">
             <Title size={"h2"} text={"Skills"} />
           </Container>
-          <Row className="mt-3 align-items-center">
-            {resume && (
+            {/* {resume && (
               <a href={resume}>
                 <Button
                   size="lg"
@@ -31,7 +30,8 @@ const Skills = () => {
                   R&eacute;sum&eacute;
                 </Button>
               </a>
-            )}
+            )} */}
+          <Row className="mt-3 align-items-center">
             {skillData.map((skills) => {
               return (
                 <Col xs={4} key={skills.id} className="my-md-2">
