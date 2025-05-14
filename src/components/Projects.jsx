@@ -57,7 +57,7 @@ const Projects = () => {
                       name={element.name}
                       description={element.description}
                       url={element.html_url}
-                      demo={element.homepage}
+                      // demo={element.homepage}
                     />
                   </Col>
                 );
