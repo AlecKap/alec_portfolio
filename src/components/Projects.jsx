@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectMode } from "../app/appSlice";
 import { selectProjects, selectMainProjects } from "../app/projectsSlice";
 import { useGetProjectsQuery } from "../app/apiSlice";
+import { useGetProject1Query, useGetProject2Query, useGetProject3Query } from "../app/apiSlice";
 // Router
 import { Link } from "react-router-dom";
 // Icons
@@ -18,9 +19,17 @@ import ProjectCard from "./ProjectCard";
 // #region component
 const Projects = () => {
   const theme = useSelector(selectMode);
-  const projects = useSelector(selectProjects);
+  // const projects = useSelector(selectProjects);
   const mainProjects = useSelector(selectMainProjects);
-  const { isLoading, isSuccess, isError, error } = useGetProjectsQuery();
+  // const { isLoading, isSuccess, isError, error } = useGetProjectsQuery();
+
+  const { data: project1, isLoading: isLoading1 } = useGetProject1Query();
+  const { data: project2, isLoading: isLoading2 } = useGetProject2Query();
+  const { data: project3, isLoading: isLoading3 } = useGetProject3Query();
+  
+  const isLoading = isLoading1 || isLoading2 || isLoading3;
+  const projects = [project1, project2, project3].filter(Boolean);
+
   let content;
 
   if (isLoading) {
@@ -29,10 +38,10 @@ const Projects = () => {
         <Loading />
       </Container>
     );
-  } else if (isSuccess) {
+  } else {
     content = (
       <>
-        {!error && projects.length === 0 && (
+        {projects.length === 0 && (
           <h2 className="text-center">
             Oops, you do not have any GitHub projects yet...
           </h2>
@@ -40,7 +49,7 @@ const Projects = () => {
         {mainProjects.length !== 0 && (
           <>
             <Row xs={1} md={2} lg={3} className="g-4 justify-content-center">
-              {mainProjects.map((element) => {
+              {projects.map((element) => {
                 return (
                   <Col key={element.id}>
                     <ProjectCard
@@ -54,7 +63,7 @@ const Projects = () => {
                 );
               })}
             </Row>
-            {projects.length > 3 && (
+            {/* {projects.length > 3 && (
               <Container className="text-center mt-5">
                 <Link to="/All-Projects">
                   <Button
@@ -67,18 +76,19 @@ const Projects = () => {
                   </Button>
                 </Link>
               </Container>
-            )}
+            )} */}
           </>
         )}
       </>
     );
-  } else if (isError) {
-    content = (
-      <Container className="d-flex align-items-center justify-content-center">
-        <h2>{`${error.status} - check getProjects query in src/app/apiSlice.js`}</h2>
-      </Container>
-    );
   }
+  // } else if (isError) {
+  //   content = (
+  //     <Container className="d-flex align-items-center justify-content-center">
+  //       <h2>{`${error.status} - check getProjects query in src/app/apiSlice.js`}</h2>
+  //     </Container>
+  //   );
+  // }
 
   return (
     <Element name={"Projects"} id="projects">
