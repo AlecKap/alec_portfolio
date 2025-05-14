@@ -2,6 +2,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Config
 import { githubUsername } from "../config";
+import { get } from "react-scroll/modules/mixins/scroller";
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -19,8 +20,20 @@ export const apiSlice = createApi({
     getProjects: builder.query({
       query: () => `/users/${githubUsername}/repos`,
     }),
+
+    getProject1: builder.query({
+      query: () => `/repos/${githubUsername}/hang-in-there-posters`,
+    }),
+
+    getProject2: builder.query({
+      query: () => `/repos/${githubUsername}/social_media_clone`,
+    }),
+
+    getProject3: builder.query({
+      query: () => `/repos/turingschool/present`,
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetSocialsQuery, useGetProjectsQuery } =
+export const { useGetUsersQuery, useGetSocialsQuery, useGetProjectsQuery, useGetProject1Query, useGetProject2Query, useGetProject3Query } =
   apiSlice;
