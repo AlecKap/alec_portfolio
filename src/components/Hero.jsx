@@ -7,12 +7,15 @@ import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 // Images
 import Logo from "../images/logo.svg";
-import { Light, Dark } from "../config";
+import { Light, Dark, resume } from "../config";
 // Components
 import { useErrorBoundary } from "react-error-boundary";
 import { Link } from "react-scroll";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import SocialLinks from "./SocialLinks";
+
+import { useSelector } from "react-redux";
+import { selectMode } from "../app/appSlice";
 
 // #region styled-components
 const spin = keyframes`
@@ -100,6 +103,7 @@ const propTypes = {
 
 const Hero = ({ name }) => {
   const { showBoundary } = useErrorBoundary();
+  const theme = useSelector(selectMode);
 
   return (
     <StyledHero>
@@ -112,6 +116,17 @@ const Hero = ({ name }) => {
             <div className="d-flex align-items-center justify-content-center">
               <SocialLinks />
             </div>
+            {resume && (
+              <a href={resume}>
+                <Button
+                  size="lg"
+                  variant={theme === "light" ? "outline-dark" : "outline-light"}
+                  className="mt-5"
+                >
+                  R&eacute;sum&eacute;
+                </Button>
+              </a>
+            )}
           </Col>
           {/* <Col className="d-none d-md-block">
             <img
